@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cavedrone.ogg-073841e6b1389e9b37cab19f9a19f155.oggstr"
+
+[deps]
+
+source_file="res://sound/cavedrone.ogg"
+dest_files=[ "res://.import/cavedrone.ogg-073841e6b1389e9b37cab19f9a19f155.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
