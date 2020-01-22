@@ -14,7 +14,7 @@ onready var Players = Node.new()
 # See https://silentwolf.com for more details
 #
 var config = {
-	"api_key": "***",
+	"api_key": "PujcxaTsik4bwsAdUu83P4h6dGv4n6XX8yvNscUc",
 	"game_id": "MyPocketDungeon",
 	"game_version": "0.0.1",
 	"log_level": 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://img/dungeon_tiles.png" type="Texture" id=1]
 [ext_resource path="res://addons/silent_wolf/SilentWolf.gd" type="Script" id=2]
 [ext_resource path="res://sound/cavedrone.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Game.gd" type="Script" id=4]
 [ext_resource path="res://Data.gd" type="Script" id=5]
+[ext_resource path="res://PixelatedLoveOld.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -268,6 +269,10 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.762136, 0.868932 )
 colors = PoolColorArray( 1, 0.125061, 0.0820313, 1, 0.144126, 0.0356676, 0.0326527, 1, 0.847059, 0.847059, 0.847059, 0.203922 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 6 )
 
 [node name="Game" type="Node2D" groups=[
 "Presist",
@@ -785,6 +790,95 @@ __meta__ = {
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+
+[node name="InfluenceDisplay" type="Label" parent="."]
+margin_left = 339.0
+margin_top = 199.208
+margin_right = 497.0
+margin_bottom = 213.208
+text = "Influence Heros Direction"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfluenceCostDisplay" type="Label" parent="."]
+margin_left = 510.254
+margin_top = 199.254
+margin_right = 557.254
+margin_bottom = 213.254
+text = "xxx"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+margin_left = 339.0
+margin_top = 218.0
+margin_right = 563.0
+margin_bottom = 294.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pad" type="Button" parent="GridContainer2"]
+margin_right = 66.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpButton2" type="Button" parent="GridContainer2"]
+margin_left = 70.0
+margin_right = 146.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 9 )
+text = "UP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pad2" type="Button" parent="GridContainer2"]
+margin_left = 150.0
+margin_right = 224.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftButton" type="Button" parent="GridContainer2"]
+margin_top = 40.0
+margin_right = 66.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+text = "LEFT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownButton" type="Button" parent="GridContainer2"]
+margin_left = 70.0
+margin_top = 40.0
+margin_right = 146.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+text = "DOWN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="Button" parent="GridContainer2"]
+margin_left = 150.0
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+text = "RIGHT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Submit" to="HighScores" method="_on_Submit_pressed"]
 [connection signal="pressed" from="GridContainer/AddSlime" to="." method="_on_AddSlime_pressed"]
 [connection signal="pressed" from="GridContainer/AddBat" to="." method="_on_AddBat_pressed"]
@@ -793,3 +887,7 @@ autoplay = true
 [connection signal="pressed" from="GridContainer/Expand" to="." method="_on_Expand_pressed"]
 [connection signal="text_changed" from="DungeonName" to="." method="_on_DungeonName_text_changed"]
 [connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="GridContainer2/UpButton2" to="." method="_on_UpButton2_pressed"]
+[connection signal="pressed" from="GridContainer2/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="GridContainer2/DownButton" to="." method="_on_DownButton_pressed"]
+[connection signal="pressed" from="GridContainer2/RightButton" to="." method="_on_RightButton_pressed"]

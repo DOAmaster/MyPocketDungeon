@@ -20,6 +20,8 @@ var snakeCount = 0
 var snakeMax = 3
 var snakeCost = 2
 
+var influenceCost = 1
+
 var timer
 
 const MySlimeResource = preload("res://Slime.tscn")
@@ -44,6 +46,7 @@ func _ready():
 	get_node("GridContainer/ChestCostDisplay").text = String(lootCost)
 	get_node("GridContainer/ExpandCostDisplay").text = String(expandCost)
 	get_node("GridContainer/SnakeCostDisplay").text = String(snakeCost)
+	get_node("InfluenceCostDisplay").text = String(influenceCost)
 	
 	#print(get_filename())
 	
@@ -222,4 +225,52 @@ func _on_CheckBox_toggled(button_pressed):
 	else:
 		get_node("BGM").stop()
 		
+	pass # Replace with function body.
+
+
+func _on_UpButton2_pressed():
+	if (myGlobals.dungeonXp >= influenceCost):
+		print("Influencing Up")
+		myGlobals.dungeonXp = myGlobals.dungeonXp - influenceCost
+		get_node("XpDisplay").text = String(myGlobals.dungeonXp)
+		#get all Guy1 chars and influence up on them
+		var heros = get_tree().get_nodes_in_group("Hero")
+		for i in heros:
+			i.influenceUp()
+	pass # Replace with function body.
+
+
+func _on_LeftButton_pressed():
+	if (myGlobals.dungeonXp >= influenceCost):
+		print("Influencing Left")
+		myGlobals.dungeonXp = myGlobals.dungeonXp - influenceCost
+		get_node("XpDisplay").text = String(myGlobals.dungeonXp)
+		#get all Guy1 chars and influence up on them
+		var heros = get_tree().get_nodes_in_group("Hero")
+		for i in heros:
+			i.influenceLeft()
+	pass # Replace with function body.
+
+
+func _on_DownButton_pressed():
+	if (myGlobals.dungeonXp >= influenceCost):
+		print("Influencing Down")
+		myGlobals.dungeonXp = myGlobals.dungeonXp - influenceCost
+		get_node("XpDisplay").text = String(myGlobals.dungeonXp)
+		#get all Guy1 chars and influence up on them
+		var heros = get_tree().get_nodes_in_group("Hero")
+		for i in heros:
+			i.influenceDown()
+	pass # Replace with function body.
+
+
+func _on_RightButton_pressed():
+	if (myGlobals.dungeonXp >= influenceCost):
+		print("Influencing Right")
+		myGlobals.dungeonXp = myGlobals.dungeonXp - influenceCost
+		get_node("XpDisplay").text = String(myGlobals.dungeonXp)
+		#get all Guy1 chars and influence up on them
+		var heros = get_tree().get_nodes_in_group("Hero")
+		for i in heros:
+			i.influenceRight()
 	pass # Replace with function body.

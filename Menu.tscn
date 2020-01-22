@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://img/dungeon_tiles.png" type="Texture" id=1]
 [ext_resource path="res://img/Old enemies.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://img/logo.png" type="Texture" id=8]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://AnimationPlayer.gd" type="Script" id=10]
+[ext_resource path="res://BONEAPA.TTF" type="DynamicFontData" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -304,8 +305,11 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="Animation" id=13]
-resource_name = "bounceTitle"
+[sub_resource type="DynamicFont" id=13]
+size = 38
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=14]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("logo:position")
@@ -381,7 +385,7 @@ shape = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Slime"]
 frames = SubResource( 12 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Slime2" type="KinematicBody2D" parent="."]
@@ -393,7 +397,7 @@ shape = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Slime2"]
 frames = SubResource( 12 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Slime3" type="KinematicBody2D" parent="."]
@@ -405,7 +409,6 @@ shape = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Slime3"]
 frames = SubResource( 12 )
-frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -413,23 +416,25 @@ position = Vector2( 54.6902, -2.39621 )
 current = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = -38.0
-margin_top = -119.0
-margin_right = 46.0
-margin_bottom = 40.0
+margin_left = -424.0
+margin_top = -155.0
+margin_right = -127.0
+margin_bottom = -28.9999
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="New Game" type="Button" parent="GridContainer"]
-margin_right = 87.0
-margin_bottom = 20.0
-text = "New Game"
+modulate = Color( 1, 0.913725, 0, 1 )
+margin_right = 228.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 13 )
+text = "new game"
 
 [node name="High Scores" type="Button" parent="GridContainer"]
-margin_top = 24.0
-margin_right = 87.0
-margin_bottom = 44.0
+margin_top = 49.0
+margin_right = 228.0
+margin_bottom = 69.0
 text = "High Scores"
 
 [node name="Title" type="TextEdit" parent="."]
@@ -472,7 +477,7 @@ margin_left = 533.0
 margin_top = 280.0
 margin_right = 564.0
 margin_bottom = 295.0
-text = "v0.7"
+text = "v0.8"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -482,10 +487,10 @@ position = Vector2( -38, -95 )
 script = ExtResource( 5 )
 
 [node name="ScoreNode" type="Node2D" parent="."]
-visible = false
 
 [node name="ScoreBoard" type="ColorRect" parent="ScoreNode"]
-margin_left = -268.0
+visible = false
+margin_left = -347.0
 margin_top = -66.0
 margin_right = 304.0
 margin_bottom = 213.0
@@ -520,11 +525,11 @@ position = Vector2( 60.3987, -217.14 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath(".")
 method_call_mode = 1
-anims/bounceTitle = SubResource( 13 )
+anims/bounceTitle = SubResource( 14 )
 script = ExtResource( 10 )
 
 [node name="logo" type="Sprite" parent="."]
-position = Vector2( 7.53691, -177.36 )
+position = Vector2( 1.53691, -237.36 )
 texture = ExtResource( 8 )
 
 [node name="Bat2" parent="." instance=ExtResource( 6 )]

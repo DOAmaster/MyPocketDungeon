@@ -18,16 +18,47 @@ var batXpReward = 2
 var snakeLoreReward = 2
 var snakeXpReward = 8
 
+var influenceActive = 0
+var influUp = 0
+var influDown = 0
+var influLeft = 0
+var influRight = 0
+
+
+func influenceUp():
+	influUp = 1
+	get_node("thinkingParticle").emitting = true
+	pass
+	
+func influenceDown():
+	influDown = 1
+	get_node("thinkingParticle").emitting = true
+	pass
+
+func influenceLeft():
+	influLeft = 1
+	get_node("thinkingParticle").emitting = true
+	pass
+
+func influenceRight():
+	influRight = 1
+	get_node("thinkingParticle").emitting = true
+	pass
+
 func get_input():
 	# Detect up/down/left/right keystate and only move when pressed.
 	velocity = Vector2()
-	if (movingDir == 1):
+	#right
+	if (movingDir == 1 || influRight == 1):
 		velocity.x += 1
-	if (movingDir == 2):
+	#left
+	if (movingDir == 2 || influLeft == 1):
 		velocity.x -= 1
-	if (movingDir == 3 || movingDir == 5 || movingDir == 6):
+	#down
+	if (movingDir == 3 || influDown == 1):
 		velocity.y += 1
-	if (movingDir >= 4):
+	#up
+	if (movingDir >= 4 || influUp == 1):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 
@@ -72,7 +103,12 @@ func _hearthTimer():
 
 #timer called every 4 second to update time
 func _timeout():
-	movingDir = rng.randi_range(1, 6)
+	movingDir = rng.randi_range(1, 4)
+	influenceActive = 0;
+	influUp = 0
+	influDown = 0
+	influLeft = 0
+	influRight = 0
 	#print("Changing movement")
 
 func _physics_process(delta):
